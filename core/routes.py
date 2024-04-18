@@ -73,3 +73,7 @@ def login():
 #     logout_user()
 #     return redirect(url_for('login'))
 
+
+@app.get("/translate")
+def translate_page():
+    return render_template("translate.html")
