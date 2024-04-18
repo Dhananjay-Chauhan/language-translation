@@ -1,5 +1,5 @@
 from sqlalchemy import func
-from core import app
+from core import app, trans
 from flask import render_template, flash, request, redirect, url_for
 from sqlalchemy.orm import DeclarativeBase
 from datetime import datetime
@@ -66,12 +66,14 @@ def login():
 
     return render_template('login.html')
 
-@app.route("/translate/text", methods=['POST])
+@app.post("/translate")
 def translate_text():
     # TODO - Dummy response
-    text = request.form.get('text', "")
+    text = request.get_json(force=True).get("text", "")
 
-    return {"translated": "tom-tom"}
+    tokens = trans.translate(text)
+
+    return {"text": tokens}
 
 
 # @app.route('/logout', methods=['GET', 'POST'])
