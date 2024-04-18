@@ -66,6 +66,14 @@ def login():
 
     return render_template('login.html')
 
+@app.route("/translate/text", methods=['POST])
+def translate_text():
+    # TODO - Dummy response
+    text = request.form.get('text', "")
+
+    return {"translated": "tom-tom"}
+
+
 # @app.route('/logout', methods=['GET', 'POST'])
 # @login_required
 # def logout():
