@@ -95,7 +95,6 @@ block login %} {% endblock %}
 
     const id = (a) => document.getElementById(a);
     function translate() {
-        id("textb").value = id("texta").value;
         fetch("/translate", {
             method: "post",
             headers: {
