@@ -38,20 +38,12 @@
 </head>
 
 <body>
-    <!-- <video autoplay muted loop class="video-background">
-      <source src="{{ url_for('static', filename='bg.mp4') }}" type="video/mp4">
-    </video> -->
     <header
         class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md bg-gray-200 py-3 md:top-6 md:rounded-3xl lg:max-w-screen-lg">
         <div class="px-4">
             <div class="flex items-center justify-between">
                 <div class="flex shrink-0">
                     <a aria-current="page" class="flex items-center" href="/">
-                        <!-- <img
-                class="h-7 w-auto"
-                src="../static/images/snowflake.png"
-                alt="cscscsc"
-              /> -->
                         <p class="text-black">Language Translator</p>
                         <p class="sr-only">Website Title</p>
                     </a>
@@ -82,8 +74,8 @@
         </button>
         <div>
             <div class="text-xl bold">Spanish</div>
-            <textarea disabled class="disabled:bg-white outline-none border-2 border-indigo-500 p-3 resize-none" name="textb" id="textb"
-                cols="30" rows="10"></textarea>
+            <textarea disabled class="disabled:bg-white outline-none border-2 border-indigo-500 p-3 resize-none"
+                name="textb" id="textb" cols="30" rows="10"></textarea>
         </div>
     </div>
 
@@ -106,7 +98,7 @@ block login %} {% endblock %}
         })
     }
 
-    id("butt").addEventListener("click", translate)
+    id("butt").addEventListener("click", translate);
 </script>
 
 </html>

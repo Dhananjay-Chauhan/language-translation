@@ -1,6 +1,6 @@
 from sqlalchemy import func
 from core import app, trans
-from flask import render_template, flash, request, redirect, url_for
+from flask import jsonify, render_template, flash, request, redirect, url_for
 from sqlalchemy.orm import DeclarativeBase
 from datetime import datetime
 import bcrypt
@@ -8,7 +8,7 @@ import bcrypt
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 
 from core.models.User import * 
-
+from .ai import *
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -87,3 +87,16 @@ def translate_text():
 @app.get("/translate")
 def translate_page():
     return render_template("translate.html")
+
+@app.get("/qa")
+def qa_page():
+    return render_template("qa.html")
+
+@app.post("/qa")
+def qa_post():
+    data = request.get_json(force=True)
+    context = data["context"]
+    ques = data["ques"]
+    lang = data["lang"]
+    ans = engines[lang](context=context, question=ques)
+    return jsonify(ans=ans)
